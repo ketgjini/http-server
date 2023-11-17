@@ -1,0 +1,43 @@
+type Service {
+    id: ID!
+    resources: [Resource]
+}
+
+type Resource {
+    id: ID!
+    owners: [Owner]
+}
+
+type Owner {
+    id: ID!
+    name: String
+    accountNumber: String
+    level: Int
+}
+
+input ServiceInput {
+    id: ID
+    resources: [ResourceInput]
+}
+
+input ResourceInput {
+    id: ID
+    owners: [OwnerInput]
+}
+
+input OwnerInput {
+    id: ID
+    name: String
+    accountNumber: String
+    level: Int
+}
+
+type Query {
+    getServiceById(id: ID!): Service
+    getAllServices: [Service]
+}
+
+type Mutation {
+    createService(serviceInput: ServiceInput): Service
+    updateService(id: ID!, serviceInput: ServiceInput): Service
+}
