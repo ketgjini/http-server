@@ -1,16 +1,16 @@
-package com.ketrina.httpserver.model.input;
+package com.ketrina.httpserver.model.response;
 
-public class OwnerInput {
+public class OwnerResponse {
     private String id;
     private String name;
     private String accountNumber;
     private int level;
 
     // Empty constructor
-    public OwnerInput() { }
+    public OwnerResponse() { }
 
     // Parameterized constructor
-    public OwnerInput(final String id, final String name, final String accountNumber, final int level) {
+    public OwnerResponse(final String id, final String name, final String accountNumber, final int level) {
         this.id = id;
         this.name = name;
         this.accountNumber = accountNumber;

@@ -1,17 +1,18 @@
-package com.ketrina.httpserver.model.input;
+package com.ketrina.httpserver.model.response;
+
 
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
-public class ServiceInput {
+public class ServiceResponse {
     private String id;
-    private List<ResourceInput> resources = new CopyOnWriteArrayList<>();
+    private List<ResourceResponse> resources = new CopyOnWriteArrayList<>();
 
     // Empty constructor
-    public ServiceInput() { }
+    public ServiceResponse() { }
 
     // Parameterized constructor
-    public ServiceInput(final String id, final List<ResourceInput> resources) {
+    public ServiceResponse(final String id, final List<ResourceResponse> resources) {
         this.id = id;
         this.resources = new CopyOnWriteArrayList<>(resources);
     }
@@ -24,11 +25,11 @@ public class ServiceInput {
         this.id = id;
     }
 
-    public List<ResourceInput> getResources() {
+    public List<ResourceResponse> getResources() {
         return resources;
     }
 
-    public void setResources(List<ResourceInput> resources) {
+    public void setResources(List<ResourceResponse> resources) {
         this.resources = new CopyOnWriteArrayList<>(resources);
     }
 }

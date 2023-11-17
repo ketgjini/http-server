@@ -1,18 +1,17 @@
-package com.ketrina.httpserver.model.input;
-
+package com.ketrina.httpserver.model.response;
 
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
-public class ResourceInput {
+public class ResourceResponse {
     private String id;
-    private List<OwnerInput> owners = new CopyOnWriteArrayList<>();
+    private List<OwnerResponse> owners = new CopyOnWriteArrayList<>();
 
     // Empty constructor
-    public ResourceInput() { }
+    public ResourceResponse() { }
 
     // Parameterized constructor
-    public ResourceInput(final String id, final List<OwnerInput> owners) {
+    public ResourceResponse(final String id, final List<OwnerResponse> owners) {
         this.id = id;
         this.owners = new CopyOnWriteArrayList<>(owners);
     }
@@ -25,11 +24,11 @@ public class ResourceInput {
         this.id = id;
     }
 
-    public List<OwnerInput> getOwners() {
+    public List<OwnerResponse> getOwners() {
         return owners;
     }
 
-    public void setOwners(List<OwnerInput> owners) {
+    public void setOwners(List<OwnerResponse> owners) {
         this.owners = new CopyOnWriteArrayList<>(owners);
     }
 }

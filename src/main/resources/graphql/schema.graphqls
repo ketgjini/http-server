@@ -32,12 +32,29 @@ input OwnerInput {
     level: Int
 }
 
+type ServiceResponse {
+    id: ID
+    resources: [ResourceResponse]
+}
+
+type ResourceResponse {
+    id: ID
+    owners: [OwnerResponse]
+}
+
+type OwnerResponse {
+    id: ID
+    name: String
+    accountNumber: String
+    level: Int
+}
+
 type Query {
-    getServiceById(id: ID!): Service
-    getAllServices: [Service]
+    getServiceById(id: ID!): ServiceResponse
+    getAllServices: [ServiceResponse]
 }
 
 type Mutation {
-    createService(serviceInput: ServiceInput): Service
-    updateService(id: ID!, serviceInput: ServiceInput): Service
+    createService(serviceInput: ServiceInput): ServiceResponse
+    updateService(id: ID!, serviceInput: ServiceInput): ServiceResponse
 }
