@@ -1,6 +1,12 @@
 spring:
   profiles:
-    active: dev
+    active: test
   graphql:
     graphiql:
       enabled: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
