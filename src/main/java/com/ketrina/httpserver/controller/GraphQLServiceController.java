@@ -1,0 +1,55 @@
+package com.ketrina.httpserver.controller;
+
+import com.ketrina.httpserver.model.entities.Service;
+import com.ketrina.httpserver.model.input.ServiceInput;
+import com.ketrina.httpserver.model.mapper.ServiceMapper;
+import com.ketrina.httpserver.model.response.ServiceResponse;
+import com.ketrina.httpserver.service.ServiceOperations;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.graphql.data.method.annotation.Argument;
+import org.springframework.graphql.data.method.annotation.MutationMapping;
+import org.springframework.graphql.data.method.annotation.QueryMapping;
+import org.springframework.stereotype.Controller;
+
+import java.util.List;
+
+@Controller
+public class GraphQLServiceController {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(GraphQLServiceController.class);
+
+    private final ServiceMapper serviceMapper;
+    private final ServiceOperations serviceOperations;
+
+    public GraphQLServiceController(final ServiceMapper serviceMapper, final ServiceOperations serviceOperations) {
+        this.serviceMapper = serviceMapper;
+        this.serviceOperations = serviceOperations;
+    }
+
+    @QueryMapping
+    public synchronized ServiceResponse getServiceById(@Argument final String id) {
+        LOGGER.info("Retrieving Service with id {}", id);
+        return serviceMapper.toServiceResponse(serviceOperations.getServiceById(id));
+    }
+
+    @QueryMapping
+    public synchronized List<ServiceResponse> getAllServices() {
+        LOGGER.info("Retrieving all Services...");
+        return serviceMapper.toServiceResponseList(serviceOperations.getAllServices());
+    }
+
+    @MutationMapping
+    public synchronized ServiceResponse createService(@Argument final ServiceInput serviceInput) {
+        LOGGER.info("Creating a Service...");
+        final Service service = serviceOperations.createService(serviceMapper.toServiceEntity(serviceInput));
+        return serviceMapper.toServiceResponse(service);
+    }
+
+    @MutationMapping
+    public ServiceResponse updateService(@Argument final String id, @Argument final ServiceInput serviceInput) {
+        LOGGER.info("Updating Service {} ", id);
+        final Service service = serviceOperations.updateService(id, serviceMapper.toServiceEntity(serviceInput));
+        return serviceMapper.toServiceResponse(service);
+    }
+}
