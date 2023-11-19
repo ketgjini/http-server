@@ -4,5 +4,6 @@ spring:
       on-profile: dev
   data:
     mongodb:
-      uri: mongodb://localhost:27017/httpserver_data
-      database: httpserver_data
+      uri: mongodb://root:root@localhost:27017/httpserver_data?authSource=admin
+  jpa:
+    database-platform: org.hibernate.dialect.MongoDialect

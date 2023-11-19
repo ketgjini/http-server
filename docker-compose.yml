@@ -1,0 +1,32 @@
+version: '3'
+
+services:
+  dev_mongodb:
+    image: mongo
+    container_name: dev_mongodb
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: root
+      MONGO_INITDB_DATABASE: httpserver_data
+    volumes:
+      - httpserver-data-mongo:/data/db
+    command: mongod --bind_ip_all
+
+  test_mongodb:
+    image: mongo
+    container_name: test_mongodb
+    ports:
+      - "27018:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: root
+      MONGO_INITDB_DATABASE: testdb
+    volumes:
+      - testdb-data-mongo:/data/db
+    command: mongod --bind_ip_all
+
+volumes:
+  httpserver-data-mongo:
+  testdb-data-mongo:
