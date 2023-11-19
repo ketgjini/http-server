@@ -12,7 +12,6 @@ services:
       MONGO_INITDB_DATABASE: httpserver_data
     volumes:
       - httpserver-data-mongo:/data/db
-    command: mongod --bind_ip_all
 
   test_mongodb:
     image: mongo
@@ -25,7 +24,6 @@ services:
       MONGO_INITDB_DATABASE: testdb
     volumes:
       - testdb-data-mongo:/data/db
-    command: mongod --bind_ip_all
 
 volumes:
   httpserver-data-mongo:
