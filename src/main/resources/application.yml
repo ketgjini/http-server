@@ -4,6 +4,7 @@ spring:
   graphql:
     graphiql:
       enabled: true
+    path: /api/graphql
 
 management:
   endpoints:
