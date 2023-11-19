@@ -3,11 +3,14 @@
 # Start MongoDB docker container using docker-compose
 docker-compose up -d
 
+# Set gradle version to be used for wrapper
+gradle wrapper --gradle-version 8.4
+
 # Make the gradlew script executable
-sudo chmod +x gradlew
+chmod +x gradlew
 
 # Build the application using Gradle
-sudo ./gradlew build
+./gradlew build
 
 # Define the default Spring profile (if no argument is provided default is 'test')
 SPRING_PROFILE=${1:-test}
