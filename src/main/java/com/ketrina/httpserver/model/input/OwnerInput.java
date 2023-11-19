@@ -1,15 +1,23 @@
 package com.ketrina.httpserver.model.input;
 
+/**
+ * Input class representing owner information used for creating or updating an owner.
+ * @author Ketrina
+ */
 public class OwnerInput {
     private String id;
     private String name;
     private String accountNumber;
     private int level;
 
-    // Empty constructor
+    /**
+     * Default constructor.
+     */
     public OwnerInput() { }
 
-    // Parameterized constructor
+    /**
+     * Parameterized constructor.
+     */
     public OwnerInput(final String id, final String name, final String accountNumber, final int level) {
         this.id = id;
         this.name = name;

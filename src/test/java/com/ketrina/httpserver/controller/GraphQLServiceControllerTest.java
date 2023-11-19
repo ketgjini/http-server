@@ -23,6 +23,10 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * Test class for the GraphQLServiceController using Mockito.
+ * @author Ketrina
+ */
 @ExtendWith(MockitoExtension.class)
 public class GraphQLServiceControllerTest {
 

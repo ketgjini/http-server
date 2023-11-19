@@ -1,17 +1,24 @@
 package com.ketrina.httpserver.model.input;
 
-
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
+/**
+ * Input class representing resource information used for creating or updating a resource.
+ * @author Ketrina
+ */
 public class ResourceInput {
     private String id;
     private List<OwnerInput> owners = new CopyOnWriteArrayList<>();
 
-    // Empty constructor
+    /**
+     * Default constructor.
+     */
     public ResourceInput() { }
 
-    // Parameterized constructor
+    /**
+     * Parameterized constructor.
+     */
     public ResourceInput(final String id, final List<OwnerInput> owners) {
         this.id = id;
         this.owners = new CopyOnWriteArrayList<>(owners);

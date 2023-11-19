@@ -19,6 +19,11 @@ import static org.mockito.Mockito.*;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * Test class for the ServiceOperations component.
+ * Uses Mockito for mocking dependencies and JUnit 5 for testing.
+ * @author Ketrina
+ */
 @ExtendWith(MockitoExtension.class)
 public class ServiceOperationsTest {
     @Mock

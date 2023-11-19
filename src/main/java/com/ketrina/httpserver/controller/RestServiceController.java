@@ -20,14 +20,21 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/services")
 @Profile("test")
 public class RestServiceController {
+
     private final ServiceOperations serviceOperations;
     private final ServiceMapper serviceMapper;
 
+    /**
+     * Parametrized constructor.
+     */
     public RestServiceController(final ServiceOperations serviceOperations, final ServiceMapper serviceMapper) {
         this.serviceOperations = serviceOperations;
         this.serviceMapper = serviceMapper;
     }
 
+    /**
+     * Endpoint to retrieve a service by ID.
+     */
     @GetMapping("/{id}")
     public ResponseEntity<ServiceResponse> getServiceById(@PathVariable final String id) {
         final ServiceResponse service = serviceMapper.toServiceResponse(serviceOperations.getServiceById(id));
@@ -36,14 +43,20 @@ public class RestServiceController {
                 : new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
+    /**
+     * Endpoint to create a new service.
+     */
     @PostMapping("/create")
     public ResponseEntity<ServiceResponse> createService(@RequestBody final ServiceInput input) {
         final Service createdService = serviceOperations.createService(serviceMapper.toServiceEntity(input));
         return new ResponseEntity<>(serviceMapper.toServiceResponse(createdService), HttpStatus.CREATED);
     }
 
+    /**
+     * Endpoint to update an existing service.
+     */
     @PutMapping("/update/{id}")
-    public ResponseEntity<ServiceResponse> updateService(@PathVariable final String id, @RequestBody ServiceInput input) {
+    public ResponseEntity<ServiceResponse> updateService(@PathVariable final String id, @RequestBody final ServiceInput input) {
         final Service updatedService = serviceOperations.updateService(id, serviceMapper.toServiceEntity(input));
         return updatedService != null
                 ? new ResponseEntity<>(serviceMapper.toServiceResponse(updatedService), HttpStatus.OK)
