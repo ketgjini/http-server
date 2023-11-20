@@ -4,5 +4,9 @@ spring:
       on-profile: test
   data:
     mongodb:
-      uri: mongodb://localhost:27017/testdb
-      database: testdb
+      uri: mongodb://root:root@localhost:27018/testdb?authSource=admin
+  jpa:
+    database-platform: org.hibernate.dialect.MongoDialect
+
+server:
+  port: 8080

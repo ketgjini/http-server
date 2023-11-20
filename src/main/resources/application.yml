@@ -1,9 +1,8 @@
 spring:
-  profiles:
-    active: test
   graphql:
     graphiql:
       enabled: true
+    path: /api/graphql
 
 management:
   endpoints:

@@ -11,6 +11,12 @@ import org.springframework.cache.annotation.Cacheable;
 
 import java.util.List;
 
+/**
+ * Service class for performing operations on {@link Service} entities.
+ * Utilizes Spring's caching mechanism with cache name "services".
+ *
+ * @author Ketrina
+ */
 @org.springframework.stereotype.Service
 @CacheConfig(cacheNames = "services")
 public class ServiceOperations {
@@ -19,25 +25,29 @@ public class ServiceOperations {
 
     private final ServiceRepository serviceRepository;
 
+    /**
+     * Parametrized Constructor.
+     * @param serviceRepository The repository for managing {@link Service} entities.
+     */
     public ServiceOperations(final ServiceRepository serviceRepository) {
         this.serviceRepository = serviceRepository;
     }
 
     @Cacheable(key = "#id")
-    public Service getServiceById(final String id) {
+    public synchronized Service getServiceById(final String id) {
         LOGGER.info("Retrieving Service with id {}", id);
         return serviceRepository.findById(id)
                 .orElseThrow(() -> new ServiceNotFoundException("Could not find the requested Service with id " + id ));
     }
 
     @Cacheable()
-    public List<Service> getAllServices() {
+    public synchronized List<Service> getAllServices() {
         LOGGER.info("Retrieving all Services...");
         return serviceRepository.findAll();
     }
 
     @CachePut(key = "#service.id")
-    public Service createService(final Service service) {
+    public synchronized Service createService(final Service service) {
         LOGGER.info("Creating a Service...");
         return serviceRepository.save(service);
     }

@@ -10,11 +10,16 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+/**
+ * REST Controller for managing {@link Service} entities.
+ * Handles operations such as retrieving, creating, and updating services.
+ *
+ * @author Ketrina
+ */
 @RestController
 @RequestMapping("/api/services")
 @Profile("test")
 public class RestServiceController {
-
     private final ServiceOperations serviceOperations;
     private final ServiceMapper serviceMapper;
 

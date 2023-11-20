@@ -12,6 +12,12 @@ import org.springframework.stereotype.Controller;
 
 import java.util.List;
 
+/**
+ * GraphQL Controller for managing {@link Service} entities.
+ * Handles GraphQL queries and mutations for Service entities.
+ *
+ * @author Ketrina
+ */
 @Controller
 public class GraphQLServiceController {
     private final ServiceMapper serviceMapper;
@@ -23,17 +29,17 @@ public class GraphQLServiceController {
     }
 
     @QueryMapping
-    public synchronized ServiceResponse getServiceById(@Argument final String id) {
+    public ServiceResponse getServiceById(@Argument final String id) {
         return serviceMapper.toServiceResponse(serviceOperations.getServiceById(id));
     }
 
     @QueryMapping
-    public synchronized List<ServiceResponse> getAllServices() {
+    public List<ServiceResponse> getAllServices() {
         return serviceMapper.toServiceResponseList(serviceOperations.getAllServices());
     }
 
     @MutationMapping
-    public synchronized ServiceResponse createService(@Argument final ServiceInput serviceInput) {
+    public ServiceResponse createService(@Argument final ServiceInput serviceInput) {
         final Service service = serviceOperations.createService(serviceMapper.toServiceEntity(serviceInput));
         return serviceMapper.toServiceResponse(service);
     }
