@@ -101,7 +101,7 @@ curl http://localhost:8080/api/graphql \
 -H 'Content-Type: application/json' \
 -d '{"query":"{ service: getServiceById(id: \"service_id_1\") { id resources { id owners { id name accountNumber level } } } }"}'
 ```
-In this case, if you run it after creating the above service, if the cashing works *(which it should)* you won't see any message in your running Java terminal.
+In this case, if you run it after creating the above service, if the cashing works *(which it should)* you won't see any message in your running Spring boot project terminal.
 
 ### 3. Update a Service by ID
 ```bash
