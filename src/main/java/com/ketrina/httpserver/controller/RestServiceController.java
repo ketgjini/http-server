@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.*;
  * @author Ketrina
  */
 @RestController
-@RequestMapping("/api/services")
+@RequestMapping("/api/v1/services")
 @Profile("test")
 public class RestServiceController {
 
@@ -46,7 +46,7 @@ public class RestServiceController {
     /**
      * Endpoint to create a new service.
      */
-    @PostMapping("/create")
+    @PostMapping
     public ResponseEntity<ServiceResponse> createService(@RequestBody final ServiceInput input) {
         final Service createdService = serviceOperations.createService(serviceMapper.toServiceEntity(input));
         return new ResponseEntity<>(serviceMapper.toServiceResponse(createdService), HttpStatus.CREATED);
@@ -55,7 +55,7 @@ public class RestServiceController {
     /**
      * Endpoint to update an existing service.
      */
-    @PutMapping("/update/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<ServiceResponse> updateService(@PathVariable final String id, @RequestBody final ServiceInput input) {
         final Service updatedService = serviceOperations.updateService(id, serviceMapper.toServiceEntity(input));
         return updatedService != null
