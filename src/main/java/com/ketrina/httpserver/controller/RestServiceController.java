@@ -10,6 +10,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 /**
  * REST Controller for managing {@link Service} entities.
  * Handles operations such as retrieving, creating, and updating services.
@@ -41,6 +43,17 @@ public class RestServiceController {
         return service != null
                 ? new ResponseEntity<>(service, HttpStatus.OK)
                 : new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+
+    /**
+     * Endpoint to retrieve all services.
+     */
+    @GetMapping
+    public ResponseEntity<List<ServiceResponse>> geAllServices() {
+        final List<ServiceResponse> services = serviceMapper.toServiceResponseList(serviceOperations.getAllServices());
+        return services != null
+                ? new ResponseEntity<>(services, HttpStatus.OK)
+                : new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
     /**
