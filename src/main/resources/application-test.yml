@@ -7,6 +7,3 @@ spring:
       uri: mongodb://root:root@localhost:27018/testdb?authSource=admin
   jpa:
     database-platform: org.hibernate.dialect.MongoDialect
-
-server:
-  port: 8080

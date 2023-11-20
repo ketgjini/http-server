@@ -24,6 +24,10 @@ import java.util.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
+/**
+ * Integration test class for the GraphQLServiceController using GraphQlTester and Mockito.
+ * @author Ketrina
+ */
 @GraphQlTest(GraphQLServiceController.class)
 public class GraphQLServiceControllerIntegrationTest {
 

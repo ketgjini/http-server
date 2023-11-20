@@ -1,15 +1,23 @@
 package com.ketrina.httpserver.model.response;
 
+/**
+ * Response class representing Owner information.
+ * @author Ketrina
+*/
 public class OwnerResponse {
     private String id;
     private String name;
     private String accountNumber;
     private int level;
 
-    // Empty constructor
+    /**
+     * Default constructor.
+     */
     public OwnerResponse() { }
 
-    // Parameterized constructor
+    /**
+     * Parameterized constructor.
+     */
     public OwnerResponse(final String id, final String name, final String accountNumber, final int level) {
         this.id = id;
         this.name = name;

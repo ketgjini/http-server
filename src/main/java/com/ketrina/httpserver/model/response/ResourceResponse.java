@@ -3,14 +3,22 @@ package com.ketrina.httpserver.model.response;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
+/**
+ * Response class representing Resource information.
+ * @author Ketrina
+ */
 public class ResourceResponse {
     private String id;
     private List<OwnerResponse> owners = new CopyOnWriteArrayList<>();
 
-    // Empty constructor
+    /**
+     * Default constructor.
+     */
     public ResourceResponse() { }
 
-    // Parameterized constructor
+    /**
+     * Parameterized constructor.
+     */
     public ResourceResponse(final String id, final List<OwnerResponse> owners) {
         this.id = id;
         this.owners = new CopyOnWriteArrayList<>(owners);

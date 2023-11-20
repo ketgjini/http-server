@@ -3,6 +3,10 @@ package com.ketrina.httpserver.model.entities;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+/**
+ * Entity class representing an Owner.
+ * @author Ketrina
+ */
 @Document(collection = "owners")
 public class Owner {
     @Id
@@ -11,10 +15,14 @@ public class Owner {
     private String accountNumber;
     private int level;
 
-    // Empty constructor
+    /**
+     * Default constructor.
+     */
     public Owner() { }
 
-    // Parameterized constructor
+    /**
+     * Parameterized constructor.
+     */
     public Owner(final String id, final String name, final String accountNumber, final int level) {
         this.id = id;
         this.name = name;

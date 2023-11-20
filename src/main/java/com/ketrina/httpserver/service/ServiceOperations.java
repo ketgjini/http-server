@@ -48,7 +48,7 @@ public class ServiceOperations {
 
     @CachePut(key = "#service.id")
     public synchronized Service createService(final Service service) {
-        LOGGER.info("Creating a Service...");
+        LOGGER.info("Creating Service with id {} ", service.getId());
         return serviceRepository.save(service);
     }
 
