@@ -68,8 +68,9 @@ public class GraphQLServiceControllerIntegrationTest {
 
     @Test
     public void getServiceByIdIT() {
+        String serviceId = "service_id_1";
         when(serviceMapper.toServiceResponse(any())).thenReturn(serviceResponse);
-        when(serviceOperations.getServiceById("service_id_1")).thenReturn(service);
+        when(serviceOperations.getServiceById(serviceId)).thenReturn(service);
 
         String document = """
                 query getServiceById($id: ID!) {
@@ -89,12 +90,12 @@ public class GraphQLServiceControllerIntegrationTest {
               """;
 
         graphQlTester.document(document)
-                .variable("id", "service_id_1")
+                .variable("id", serviceId)
                 .execute()
                 .path("getServiceById")
                 .entity(ServiceResponse.class)
                 .satisfies(serviceResponse -> {
-                    assertEquals("service_id_1", serviceResponse.getId());
+                    assertEquals(serviceId, serviceResponse.getId());
                     assertEquals(1, serviceResponse.getResources().size());
                     assertEquals("Owner 1", serviceResponse.getResources().get(0).getOwners().get(0).getName());
                 });
@@ -132,7 +133,7 @@ public class GraphQLServiceControllerIntegrationTest {
     @Test
     public void createServiceIT() {
         when(serviceMapper.toServiceResponse(any())).thenReturn(serviceResponse);
-        when(serviceOperations.createService(service)).thenReturn(service);
+        when(serviceOperations.createService(any())).thenReturn(service);
 
         String document = """
                   mutation createService($serviceInput: ServiceInput) {
@@ -208,7 +209,7 @@ public class GraphQLServiceControllerIntegrationTest {
                 .path("createService")
                 .entity(ServiceResponse.class)
                 .satisfies(serviceResponse -> {
-                    assertEquals("service_id_1", serviceResponse.getId());
+                    assertEquals(serviceId, serviceResponse.getId());
                     assertEquals(1, serviceResponse.getResources().size());
                     assertEquals("Owner 2", serviceResponse.getResources().get(0).getOwners().get(0).getName());
                     assertEquals("AC002", serviceResponse.getResources().get(0).getOwners().get(0).getAccountNumber());
