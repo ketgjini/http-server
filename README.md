@@ -25,6 +25,18 @@ Before running the project, make sure your system is equipped with the following
    sudo apt install -y openjdk-17-jdk
    ```
 
+4. **Install Gradle:**
+   Install Gradle using the following command:
+   ```bash
+   sudo apt install -y gradle
+   ```
+
+5. **Install Git:**
+   Install git using the following command:
+   ```bash
+   sudo apt install git
+   ```
+
 ### Running the project
 1. Choose a directory where to clone the project. You can also create a new one with the following command:
     ```bash
