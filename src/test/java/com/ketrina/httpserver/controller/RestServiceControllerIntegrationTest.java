@@ -31,6 +31,10 @@ import java.util.List;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
+/**
+ * Integration test class for the RestServiceController using MockMvc and Mockito.
+ * @author Ketrina
+ */
 @SpringBootTest
 @AutoConfigureMockMvc
 @ActiveProfiles("test")

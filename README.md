@@ -11,7 +11,7 @@ Before running the project, make sure your system is equipped with the following
 - **Docker:** The container ninja, ready to spin up anything!
 - **Docker Compose:** The orchestrator, coordinating the superhero team.
 
-### Unleash the Heroes!
+### Unleash the Heroes! *(if needed)*
 
 1. **Install Docker:**
    Follow the official [Docker installation guide](https://docs.docker.com/engine/install/).
@@ -62,11 +62,13 @@ Before running the project, make sure your system is equipped with the following
     ```bash
     chmod +x run_http_server_app.sh
     ```
-7. Run the script with spring profile `test` (REST endpoints *reachable*):
+7. Run the script with a chosen spring profile (dev/test):
+   
+   7.1 `test` profile (REST endpoints *reachable*):
     ```bash
     ./run_http_server_app.sh test
     ```
-8. Run the script with spring profile `dev` (REST endpoints *not-reachable*):
+   7.2 `dev` profile (REST endpoints *not-reachable*):
     ```bash
     ./run_http_server_app.sh dev
     ```
@@ -127,6 +129,11 @@ curl http://localhost:8080/api/graphql \
 
 ## REST endpoints Requests *(in spring profile `test`)*
 
+ - The following can be used to look at the structure of the REST APIs:
+```bash
+http://localhost:8080/swagger-ui/index.html
+```
+
 ### 1. Create a Service
 ```bash
 curl http://localhost:8080/api/v1/services -X POST -H 'Content-Type: application/json' -d '{"id": "service_id_3","resources": [{"id": "resource_id_4","owners": [{"id": "owner_id_33","name": "Owner 33","accountNumber": "AC033","level": 3}]}]}'
@@ -138,6 +145,10 @@ curl http://localhost:8080/api/v1/services/service_id_3 -X GET -H 'Content-Type:
 ### 3. Update a Service by ID
 ```bash
 curl http://localhost:8080/api/v1/services/service_id_3 -X PUT -H 'Content-Type: application/json' -d '{"id": "service_id_3","resources": [{"id": "resource_id_789","owners": [{"id": "owner_id_012","name": "Updated Owner","accountNumber": "AC123","level": 2}]}]}'
+```
+### 4. Get all Services
+```bash
+curl http://localhost:8080/api/v1/services -X GET -H 'Content-Type: application/json'
 ```
 
 **Note:** Adjust the request payload in the *create* and *update* examples according to your specific input requirements and change the IDs accordingly.
