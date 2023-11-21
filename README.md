@@ -52,7 +52,7 @@ Before running the project, make sure your system is equipped with the following
     ```
 4. Clone the project from github:
      ```bash
-    git clone https://github.com/ketgjini/http-server
+    git clone https://github.com/ketgjini/http-server.git
     ```
 5. CD to the project directory:
     ```bash
